@@ -47,10 +47,10 @@ function UserSign(){
                  
                 setLoginStatus(response.data.message);
                 localStorage.setItem('isAuthenticated','false');
-                     }else{
+                     }else if(response.status==200){
                          
                           console.log("successfully logged in");                           
-                        window.open("./User/User","_self");
+                        
                         localStorage.setItem('isAuthenticated','true');
                         localStorage.setItem('token',response.data.fullToken);
                         localStorage.setItem('id',response.data.payload._id);
@@ -62,6 +62,7 @@ function UserSign(){
                         localStorage.setItem('state',response.data.payload.State);
                         localStorage.setItem('country',response.data.payload.Country);
                         localStorage.setItem('currRest',"");
+                        //window.open("./User/User","_self");
 
                     }
             
