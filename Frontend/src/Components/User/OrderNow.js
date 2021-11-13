@@ -10,12 +10,14 @@ function OrderNow(){
     const[data,setdata]=useState([]);
     const history=useHistory();
     const[openModel,setOpenModel]=useState(false);
+    const[dataRest,setRestdata]=useState([]);
     
  const[cart,setCart]=useState([]);
 
- const addToCart = (dish) => {
+ const addToCart = (dish,id) => {
    if(localStorage.getItem('currRest')=="")
    {
+    localStorage.setItem('currRestId',id);
     localStorage.setItem('currRest',localStorage.getItem('restName'));
     alert("Added to Cart");
     setCart([...cart,dish]);
@@ -24,6 +26,7 @@ function OrderNow(){
   
   }else{
      if(localStorage.getItem('currRest')!=localStorage.getItem('restName')){
+        
 history.push('/Confirmation');
 }else{
         alert("Added to Cart");
@@ -45,6 +48,16 @@ setdata(response.data.dishes);
 });
 
  },[]); 
+
+ useEffect(()=>{
+    Axios.defaults.headers.common.authorization = localStorage.getItem('token');
+    Axios.post("http://localhost:3001/profile",
+{_id:localStorage.getItem('rest_id')}).then((response)=>{
+setRestdata(response.data.payload);
+
+});
+
+ },[]);
  
 function cartObject(dish,price,quantity){
 this.Dish=dish;
@@ -57,6 +70,18 @@ this.quantity=quantity;
 return(
     <div className="menu">
         <Nav/>
+        <h1>{dataRest.Name}</h1>
+        <img className="imageRest" src={dataRest.Pic}  alt="img" />
+       
+
+ <p>Email: {dataRest.Email}</p>
+ <p>{dataRest.Description}</p>
+ <p>Delivery Type: {dataRest.DeliveryType}</p>
+ <p>Open Hours: {dataRest.Time}</p>
+ <p>Food Category: {dataRest.FoodType}</p>
+ <p>Contact Us: {dataRest.Phone}</p>
+ <p>Location: {dataRest.Location}</p>
+        
        
         <div className="dishes">
            <h2 style={{fontStyle:"itlaic"}}>Place Your Order</h2>
@@ -74,7 +99,7 @@ return(
                            <button className="button" 
                             onClick={()=>{
                                 var obj=new cartObject(d.Dish,d.Price,1);
-                                addToCart(obj)}}
+                                addToCart(obj,d.Rest_id)}}
                            >Add to cart</button></div></>
                    )
                })}

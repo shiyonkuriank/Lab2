@@ -24,6 +24,7 @@ router.post('/',checkAuth,(req, res)=>{
             City:data.data.City,
             State:data.data.State,
             Country:data.data.Country,
+            Pic:data.data.Pic
           };
               
     

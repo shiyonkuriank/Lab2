@@ -56,16 +56,18 @@ return(
         <div className="container">
             
        
-            <div classname="title"><h1 style={ { color: 'darkcyan' }}>Order Details</h1> </div>
+            <div classname="title"><h1 style={ { color: 'seagreen' }}>Order Details</h1> </div>
                
             <div className="body">
             <Container>
     <Row>
         <Col md={6}>
+        <div className="mapViewOrders">
                 {cartItem.map(function (d, idx) {
 
 return (
     <>
+    
         <p key={idx} style={ { color: 'seagreen' }}><h4>{d.Dish} X {d.quantity}, Total: {d.Cost}</h4></p> </>
                
 );
@@ -77,21 +79,23 @@ return (
                 
 
 
-               
+              </div> 
                 </Col>
 
                
         <Col md={6}>
+        <div className="mapViewOrders">
             <Row>
             <Col md={4}>  
-            <label style={ { color: 'darkcyan' }}>Enter Your Address:</label>
+            
+            <label style={ { color: 'seagreen' }}>Enter Your Address:</label>
             </Col>
             
             
             <textarea style={{width: "200px", height:"35px"}} onChange={(e) => {
                                 setAddress(e.target.value);
                             } } required placeholder="Required Field"></textarea>
-                            <label style={ { color: 'darkcyan' }} >Special Instructions:</label>
+                            <label style={ { color: 'seagreen' }} >Special Instructions:</label>
                             <textarea  onChange={(e) => {
                                 setInstructions(e.target.value);
                             } } required ></textarea>
@@ -106,6 +110,7 @@ return (
 </select>
 
             </Row>
+            </div>
         </Col>
         </Row>
         </Container>

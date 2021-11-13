@@ -61,6 +61,15 @@ const editRestPhone=require('./services/editRestPhone');
 const editRestLocation=require('./services/editRestLoc');
 const editRestDesc=require('./services/editRestDesc');
 const editRestTime=require('./services/editRestTime');
+const restImg=require('./services/restImg');
+const editUserPhone=require('./services/editUserPhone');
+const editUserDOB=require('./services/editUserDOB');
+const editUserCity=require('./services/editUserCity');
+const editUserState=require('./services/editUserState');
+const editUserCountry=require('./services/editUserCountry');
+const userImg=require('./services/userImg');
+const dishImg=require('./services/dishImg');
+
 
 function handleTopicRequest(topic_name,fname){
     //var topic_name = 'root_topic';
@@ -131,3 +140,11 @@ handleTopicRequest("editRestPhone",editRestPhone);
 handleTopicRequest("editRestLocation",editRestLocation);
 handleTopicRequest("editRestDesc",editRestDesc);
 handleTopicRequest("editRestTime",editRestTime);
+handleTopicRequest("restImg",restImg);
+handleTopicRequest("editUserPhone",editUserPhone);
+handleTopicRequest("editUserDOB",editUserDOB);
+handleTopicRequest("editUserCity",editUserCity);
+handleTopicRequest("editUserState",editUserState);
+handleTopicRequest("editUserCountry",editUserCountry);
+handleTopicRequest("userImg",userImg);
+handleTopicRequest("dishImg",dishImg);

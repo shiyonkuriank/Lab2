@@ -16,11 +16,11 @@ const name=localStorage.getItem('name');
 const email=localStorage.getItem('email');
 const phone=localStorage.getItem('phone');
 const city=localStorage.getItem('city');
-const pwd=localStorage.getItem('pwd');
+
 
 const disp=()=>{
     dispatch(restlogin({name:name, email:email,
-        phone:phone,city:city,password:pwd}));
+        phone:phone,city:city}));
 }
 
 useEffect(()=>{
@@ -34,16 +34,18 @@ console.log(response.data.payload);
 
 },[]);
 
-//<img className="imageRest" src={item.Img}  alt="img" />
+
 
 disp();
 
     return(
 
-        <div classname="Profile" style={{ color: "seagreen", height:"100vh" }}>
+        <div classname="Profile" style={{ color: "seagreen" }}>
          <Nav/>
          
         <h1>Hello {localStorage.getItem('name')}!</h1>
+        <img className="imageRest" src={data.Pic}  alt="img" />
+       
 
  <p>Email: {data.Email}</p>
  <p>{data.Description}</p>

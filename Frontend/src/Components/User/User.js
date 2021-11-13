@@ -25,10 +25,10 @@ const dob=localStorage.getItem('dob');
 const city=localStorage.getItem('city');
 const state=localStorage.getItem('state');
 const country=localStorage.getItem('country');
-const pwd=localStorage.getItem('pwd');
+
 
 const disp=()=>{
-    dispatch(login({name:name, email:email,phone:phone,dob:dob,city:city,state:state,country:country,password:pwd}));
+    dispatch(login({name:name, email:email,phone:phone,dob:dob,city:city,state:state,country:country}));
 
 }
 
@@ -54,7 +54,7 @@ useEffect(()=>{
     
 },[]);
 
-
+disp();
     return(
                 
         <div className="landing" style={{height:"100%", background:"white"}}>
@@ -73,7 +73,7 @@ return (
         onClick={()=>{localStorage.setItem('rest_id',d._id);
         localStorage.setItem('restName',d.Name);}}
         class="a" style={{color:"forestgreen"}}><h4>{d.Name}</h4></Link></p>
-        <p><img className="imageFood" src={d.Img} alt="img" /></p>
+        <img className="imageFood" src={d.Pic} alt="img" />
         <p>City: {d.Location}</p>
         <p>Open Hours: {d.Time}</p>
         <button className="footerbutton" 
@@ -97,7 +97,7 @@ return (
                         localStorage.setItem('restName',d.Name);}
                     }
                         class="a" style={{color:"forestgreen"}}><h4>{d.Name}</h4></Link></p>
-                        <p><img className="imageFood" src={d.Img} alt="img" /></p>
+                        <img className="imageFood" src={d.Pic} alt="img" />
                         <p>City: {d.Location}</p>
                         <p>Open Hours: {d.Time}</p>
                         <button className="footerbutton" 

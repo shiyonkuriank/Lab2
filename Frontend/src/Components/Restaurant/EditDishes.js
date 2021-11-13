@@ -28,10 +28,11 @@ function EditDishes(){
 
 
     const handleImageChange= async (e)=>{
-		const selected=e.target.files[0];
-		const base64=await convertBase64(selected);
-        
-		setProfileImg(base64);
+        if(e.target.files && e.target.files.length > 0){
+            console.log("check name",e.target.files[0]['name'])
+            setProfileImg(e.target.files[0]);
+          }
+          const selected=e.target.files[0];
 		const ALLOWED_TYPES=["image/png", "image/jpeg", "iamge/jpg"];
 		if(selected&&ALLOWED_TYPES.includes(selected.type)){
 			let reader=new FileReader();
@@ -46,39 +47,28 @@ function EditDishes(){
 		}
 	}
 
-    const convertBase64=(file)=>{
-		return new Promise((resolve,reject)=>{
-			const fileReader=new FileReader();
-			fileReader.readAsDataURL(file);
-
-			fileReader.onload=()=>{
-				resolve(fileReader.result)
-			};
-
-			fileReader.onerror=(error)=>{
-				reject(error);
-			};
-
-		});
-	}
 
 	const uploadImage=()=>{
-		alert("Image Uploaded");
-        Axios.post("http://localhost:3001/editDishImg",
-{name:localStorage.getItem('name'),img:profileImg,dish:name}).then((response)=>{
+        const formData = new FormData();
+        formData.append("originalname",profileImg);
+        console.log("image here",profileImg)
+        Axios.post("http://localhost:3001/editRestImg",formData).then((response)=>{
   
-console.log(response.data);
+            console.log(response.data.imagePath);
+            const imagePath = response.data.imagePath;
+            Axios.defaults.headers.common.authorization = localStorage.getItem('token');
+            Axios.post("http://localhost:3001/dishPic",{
+              id:localStorage.getItem('id'),picture:imagePath,dish:name})
 
 });
-		
-		}
+			}
 
 
     const editDname=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
         Axios.post("http://localhost:3001/editDname",
-{name:name,newname:newname}).then((response)=>{
+{id:localStorage.getItem('id'),name:name,newname:newname}).then((response)=>{
   
 console.log(response.data);
 
@@ -89,7 +79,7 @@ console.log(response.data);
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
         Axios.post("http://localhost:3001/editPrice",
-{name:name,newPrice:newprice}).then((response)=>{
+{id:localStorage.getItem('id'),name:name,newPrice:newprice}).then((response)=>{
   
 console.log(response.data);
 
@@ -100,7 +90,7 @@ console.log(response.data);
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
         Axios.post("http://localhost:3001/editCat",
-{name:name,newCat:newcat}).then((response)=>{
+{id:localStorage.getItem('id'),name:name,newCat:newcat}).then((response)=>{
   
 console.log(response.data);
 
@@ -110,7 +100,7 @@ console.log(response.data);
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
         Axios.post("http://localhost:3001/editIng",
-{name:name,newIng:newing}).then((response)=>{
+{id:localStorage.getItem('id'),name:name,newIng:newing}).then((response)=>{
   
 console.log(response.data);
 

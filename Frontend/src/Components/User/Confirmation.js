@@ -28,6 +28,7 @@ const history=useHistory();
                         }}>Yes</button>
                          <button className="footerbutton" onClick={()=>{
                               localStorage.setItem('restName',localStorage.getItem('currRest'));
+                              localStorage.setItem('rest_id',localStorage.getItem('currRestId'));
                              history.push('/OrderNow');
                                                 
                         }}>No</button>

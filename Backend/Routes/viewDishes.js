@@ -21,6 +21,8 @@ router.post('/',checkAuth,(req, res)=>{
             Price:data.data[i].Price,
             Category:data.data[i].Category,
             Ingredient:data.data[i].Ingredient,
+            Pic:data.data[i].Pic,
+            Rest_id:data.data[i].Rest_id,
                            } 
                     dishes.push(dishDetails);           
                 }

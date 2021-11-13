@@ -22,7 +22,9 @@ router.post('/',checkAuth,(req, res)=>{
             Location:data.data[i].Location,
             DeliveryType:data.data[i].DeliveryType,
             FoodType:data.data[i].FoodType,
-            Time:data.data[i].Time
+            Time:data.data[i].Time,
+            Pic:data.data[i].Pic,
+
                     } 
                     restNear.push(restNearDetails);           
                 }

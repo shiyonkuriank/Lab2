@@ -2,13 +2,13 @@ import {createSlice} from '@reduxjs/toolkit'
 
 export const userSlice=createSlice({
   name: "user",
-  initialState:{value:{name:"", email:"",phone:0,dob:"",city:"",state:"",country:"",password:""}},
+  initialState:{value:{name:"", email:"",phone:0,dob:"",city:"",state:"",country:""}},
   reducers:{
       login:(state, action)=>{
           state.value=action.payload;
       },
       logout: (state)=>{
-          state.value={name:"", email:"",phone:0,dob:"",city:"",state:"",country:"",password:""}
+          state.value={name:"", email:"",phone:0,dob:"",city:"",state:"",country:""}
       }
   }
 });

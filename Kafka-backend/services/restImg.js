@@ -1,22 +1,22 @@
 "use strict";
 
-const Dishes= require("../Models/DishModel");
+const Rest= require("../Models/RestModel");
 
 const handle_request = async (msg, callback) => {
     const res = {};
-    Dishes.findOne({Rest_id:msg.id, Dish: msg.name,}, (error, dishes) => {
+    Rest.findOne({ _id: msg.id,}, (error, rests) => {
         if (error) {
             console.log('Failed to fetch data');
             callback(error, null);
-          }else if(dishes){
+          }else if(rests){
              
-            Dishes.updateOne(
+            Rest.updateOne(
                     {
-                        Dish: msg.name
+                        _id: msg.id
                     },
                    {
                     $set:{
-                        Category: msg.newCat
+                        Pic: msg.picture
                     },
                    },
                    (updateErr, updatedData) => {
@@ -33,7 +33,7 @@ const handle_request = async (msg, callback) => {
                 )
         }
               else{
-                  if(dishes=== null ){
+                  if(rests=== null ){
                     res.status = 400; res.data = "No details found";
                     callback(null, res);
                   }

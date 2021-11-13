@@ -6,8 +6,8 @@ const kafka = require('../kafka/client');
 const router = express.Router();
 
 router.post('/',checkAuth,(req, res)=>{
-    console.log("in editemail route");
-      kafka.make_request('editUserPhone', req.body, function(err, data){
+    
+      kafka.make_request('restImg', req.body, function(err, data){
       if (err) {
         res.writeHead(400, {
           "content-type": "text/plain",

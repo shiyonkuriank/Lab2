@@ -42,7 +42,11 @@ function EditProfile(){
         console.log("image here",profileImg)
         Axios.post("http://localhost:3001/editRestImg",formData).then((response)=>{
   
-console.log(response.data.imagePath);
+            console.log(response.data.imagePath);
+            const imagePath = response.data.imagePath;
+            Axios.defaults.headers.common.authorization = localStorage.getItem('token');
+            Axios.post("http://localhost:3001/restPic",{
+              id:localStorage.getItem('id'),picture:imagePath,})
 
 });
 		

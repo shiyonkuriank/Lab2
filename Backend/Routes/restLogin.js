@@ -42,7 +42,7 @@ router.post('/',(req, res)=>{
           "content-type": "text/plain",
         });
         res.end('Invalid Credentials');
-        res.send({message: "No such user found!"});
+        
       }
     });
   });

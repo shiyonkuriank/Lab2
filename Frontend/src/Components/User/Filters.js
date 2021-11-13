@@ -188,7 +188,7 @@ const locSearch=()=>{
                             
                             <p >City: {d.Location}</p>
                             <p >Category: {d.FoodType}</p>
-                            <p >Depvery: {d.DepveryType}</p>
+                            <p >Delivery: {d.DeliveryType}</p>
                             <p>Open Hours: {d.Time}</p>
                             <button className="footerbutton" 
                         onClick={()=>{addToFavourite(d.Restname, d.Loc)}}>Add to favourites</button>

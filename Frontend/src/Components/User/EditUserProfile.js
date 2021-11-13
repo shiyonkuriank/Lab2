@@ -14,20 +14,19 @@ function EditUserProfile(){
     const[newcity,setNewCity]=useState(" ");
     const[newstate,setNewState]=useState(" ");
     const[newcountry,setNewCountry]=useState(" ");
+
 	const[imgPreview,setImagePreview]=useState(null);
 	const[error, setError]=useState(false);
-	const[profileImg,setProfileImg]=useState();
-	const formData=new FormData();
+	const[profileImg,setProfileImg]=useState("");
+	
 
 	const handleImageChange= async (e)=>{
-		const selected=e.target.files[0];
-		
-		console.log(selected);
+		if(e.target.files && e.target.files.length > 0){
+            console.log("check name",e.target.files[0]['name'])
+            setProfileImg(e.target.files[0]);
+          }
 
-		//const base64=await convertBase64(selected);
-		setProfileImg(selected);
-		console.log(profileImg);
-		formData.append("image",selected);
+		const selected=e.target.files[0];
 		const ALLOWED_TYPES=["image/png", "image/jpeg", "iamge/jpg"];
 		if(selected&&ALLOWED_TYPES.includes(selected.type)){
 			let reader=new FileReader();
@@ -43,34 +42,20 @@ function EditUserProfile(){
 	}
 
 	const uploadImage=()=>{
-		console.log("File: "+profileImg);
-
-		alert("Image Uploaded");
-        Axios.post("http://localhost:3001/editProfileImg",
-{id:localStorage.getItem('id'),file:formData}).then((response)=>{
+		const formData = new FormData();
+        formData.append("originalname",profileImg);
+        console.log("image here",profileImg)
+        Axios.post("http://localhost:3001/editRestImg",formData).then((response)=>{
   
-console.log(response.data);
+            console.log(response.data.imagePath);
+            const imagePath = response.data.imagePath;
+            Axios.defaults.headers.common.authorization = localStorage.getItem('token');
+            Axios.post("http://localhost:3001/userPic",{
+              _id:localStorage.getItem('id'),picture:imagePath,})
 
 });
 		
 		}
-
-	const convertBase64=(file)=>{
-		return new Promise((resolve,reject)=>{
-			const fileReader=new FileReader();
-			fileReader.readAsDataURL(file);
-
-			fileReader.onload=()=>{
-				resolve(fileReader.result)
-			};
-
-			fileReader.onerror=(error)=>{
-				reject(error);
-			};
-
-		});
-	}
-			
 
     const editName=()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');       
@@ -88,13 +73,7 @@ console.log(response.data);
 console.log(response.data);
 
 });
-
-Axios.post("http://localhost:3001/editFavUserName",
-{name:localStorage.getItem('name'),newname:newname}).then((response)=>{
-  
-console.log(response.data);
-
-});*/
+*/
 localStorage.setItem('name',newname);
     }
 
@@ -148,10 +127,11 @@ console.log(response.data);
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
         Axios.post("http://localhost:3001/editUserCity",
 {_id:localStorage.getItem('id'),newCity:newcity}).then((response)=>{
-  
+	localStorage.setItem('city',newcity);  
 console.log(response.data);
 
 });
+localStorage.setItem('city',newcity);  
     }
     const editState=()=>{
         alert("Successfully Edited");

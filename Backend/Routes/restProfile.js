@@ -25,6 +25,7 @@ router.post('/',restCheckAuth, (req, res)=>{
             Time: data.data.Time,
             FoodType: data.data.FoodType,
             Location:data.data.Location,
+            Pic:data.data.Pic,
           };
               
     

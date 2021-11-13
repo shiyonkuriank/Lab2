@@ -4,7 +4,7 @@ const Dishes= require("../Models/DishModel");
 
 const handle_request = async (msg, callback) => {
     const res = {};
-    Dishes.findOne({Rest_id:msg.id, Dish: msg.name,}, (error, dishes) => {
+    Dishes.findOne({Rest_id:msg.id, Dish: msg.dish,}, (error, dishes) => {
         if (error) {
             console.log('Failed to fetch data');
             callback(error, null);
@@ -12,11 +12,11 @@ const handle_request = async (msg, callback) => {
              
             Dishes.updateOne(
                     {
-                        Dish: msg.name
+                        Dish: msg.dish
                     },
                    {
                     $set:{
-                        Category: msg.newCat
+                        Pic: msg.picture
                     },
                    },
                    (updateErr, updatedData) => {
