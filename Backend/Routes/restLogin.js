@@ -1,10 +1,10 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../Utils/config');
-const { restAuth } = require("../Utils/restPassport");
+const { auth } = require("../Utils/passport");
 const kafka = require('../Kafka/client');
 
-restAuth();
+auth();
 
 const router = express.Router();
 

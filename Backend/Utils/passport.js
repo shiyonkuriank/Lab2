@@ -9,7 +9,7 @@ const User=require("../Models/UserModel");
 
 // Setup work and export for the JWT passport strategy
 function auth() {
-    console.log(secret);
+    console.log("Inside userPassport:"+secret);
   const opts = {
       
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
