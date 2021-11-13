@@ -8,7 +8,7 @@ const Rest=require("../Models/RestModel");
 const User=require("../Models/UserModel");
 
 // Setup work and export for the JWT passport strategy
-function restAuth() {
+function Auth() {
     console.log(secret);
   const opts = {
       
@@ -18,7 +18,7 @@ function restAuth() {
   passport.use(
     new JwtStrategy(opts, (jwt_payload, callback) => {
       const _id = jwt_payload._id;
-      console.log("Inside restpassport: "+_id);
+      console.log("Inside passport: "+_id);
       console.log("Type: "+jwt_payload.Type);
       if(jwt_payload.Type==="Rest"){
       Rest.findById(_id, (err, results) => {
@@ -51,5 +51,5 @@ function restAuth() {
   );
 }
 
-exports.restAuth = restAuth;
-exports.restCheckAuth = passport.authenticate("jwt", { session: false });
+exports.Auth = Auth;
+exports.checkAuth = passport.authenticate("jwt", { session: false });
