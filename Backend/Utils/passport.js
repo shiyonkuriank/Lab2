@@ -8,7 +8,7 @@ const Rest=require("../Models/RestModel");
 const User=require("../Models/UserModel");
 
 // Setup work and export for the JWT passport strategy
-function Auth() {
+function auth() {
     console.log(secret);
   const opts = {
       
@@ -51,5 +51,5 @@ function Auth() {
   );
 }
 
-exports.Auth = Auth;
+exports.auth = auth;
 exports.checkAuth = passport.authenticate("jwt", { session: false });
