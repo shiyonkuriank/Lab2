@@ -14,7 +14,7 @@ const path=require('path');
 var ipAddress='localhost';
 var kafka= require('./Kafka/client');
 
-app.use(cors({ origin: `http://localhost:3000`, credentials: true }));
+app.use(cors({ origin: `http://3.135.17.82:3000`, credentials: true }));
 
 
 app.use(express.json());
@@ -31,7 +31,7 @@ app.use(
 );
 
 app.use(function(req,res,next){
-  res.setHeader('Access-Control-Allow-Origin', `http://localhost:3000`);
+  res.setHeader('Access-Control-Allow-Origin', `http://3.135.17.82:3000`);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,POST,PUT,DELETE,UPDATE');
   res.setHeader("Access-Control-Allow-Headers","Access-Control-Allow-Headers,Origin,Accept,X-Requested-With,content-type");

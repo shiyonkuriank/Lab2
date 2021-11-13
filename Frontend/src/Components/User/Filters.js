@@ -19,7 +19,7 @@ function Filters(){
 
     const restFoodType=()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/restFoodType",
+        Axios.post("http://3.135.17.82:3001/restFoodType",
 {foodType:foodType}).then((response)=>{
   setRestFoodType(response.data.filterFood);
 
@@ -28,7 +28,7 @@ function Filters(){
 
 const restDeliveryType=()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/restDeliveryType",
+    Axios.post("http://3.135.17.82:3001/restDeliveryType",
 {deliveryType:deliveryType}).then((response)=>{
 setRestDeliveryType(response.data.filterDType);
 
@@ -38,7 +38,7 @@ setRestDeliveryType(response.data.filterDType);
 const addToFavourite=(Rest, Loc)=>{
     alert("Added to Favourites");
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/favRest",
+    Axios.post("http://3.135.17.82:3001/favRest",
     {name:Rest,loc:Loc,id:localStorage.getItem('id')}).then((response)=>{
       console.log("Added to favourite");
      
@@ -48,7 +48,7 @@ const addToFavourite=(Rest, Loc)=>{
 const dishSearch=()=>{
     console.log("dish search called");
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/dishSearch",
+    Axios.post("http://3.135.17.82:3001/dishSearch",
     {dish:dish}).then((response)=>{
        setdishSearch(response.data.searchDish);
                  }
@@ -59,7 +59,7 @@ const dishSearch=()=>{
 const locSearch=()=>{
     console.log("loc: "+loc);
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/locSearch",
+    Axios.post("http://3.135.17.82:3001/locSearch",
     {Location:loc}).then((response)=>{
         if(response.data.message){
                  

@@ -22,7 +22,7 @@ function NewCart({closeModel}){
 
 const checkOut=()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/orderSummary",
+    Axios.post("http://3.135.17.82:3001/orderSummary",
     {name:localStorage.getItem('restName'),customer:localStorage.getItem('name'),
     userId:localStorage.getItem('id'),restId:localStorage.getItem('rest_id'),
     dishes:Items,price:total,address:address,type:dType,status:"New Order",instruction:instruction,date:date,time:time}).then((response)=>{

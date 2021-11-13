@@ -13,7 +13,7 @@ const[data,setdata]=useState([]);
 
 useEffect(()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/userProfile",
+    Axios.post("http://3.135.17.82:3001/userProfile",
     {_id:localStorage.getItem('id')}).then((response)=>{
       setdata(response.data.payload);
     

@@ -45,12 +45,12 @@ function EditUserProfile(){
 		const formData = new FormData();
         formData.append("originalname",profileImg);
         console.log("image here",profileImg)
-        Axios.post("http://localhost:3001/editRestImg",formData).then((response)=>{
+        Axios.post("http://3.135.17.82:3001/editRestImg",formData).then((response)=>{
   
             console.log(response.data.imagePath);
             const imagePath = response.data.imagePath;
             Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-            Axios.post("http://localhost:3001/userPic",{
+            Axios.post("http://3.135.17.82:3001/userPic",{
               _id:localStorage.getItem('id'),picture:imagePath,})
 
 });
@@ -59,7 +59,7 @@ function EditUserProfile(){
 
     const editName=()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');       
-        Axios.post("http://localhost:3001/editUserName",
+        Axios.post("http://3.135.17.82:3001/editUserName",
 {_id:localStorage.getItem('id'),newUserName:newname}).then((response)=>{
   
 console.log(response.data);
@@ -81,7 +81,7 @@ localStorage.setItem('name',newname);
 		alert("Successfully Edited");
         localStorage.setItem('email',newemail);  
 		Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserEmail",
+        Axios.post("http://3.135.17.82:3001/editUserEmail",
 {_id:localStorage.getItem('id'),newEmail:newemail}).then((response)=>{
   
 console.log(response.data);
@@ -92,7 +92,7 @@ console.log(response.data);
     const editPhone=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserPhone",
+        Axios.post("http://3.135.17.82:3001/editUserPhone",
 {_id:localStorage.getItem('id'),newPhone:newphone}).then((response)=>{
   
 console.log(response.data);
@@ -102,7 +102,7 @@ console.log(response.data);
     const editDob=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserDob",
+        Axios.post("http://3.135.17.82:3001/editUserDob",
 {_id:localStorage.getItem('id'),newDOB:newdob}).then((response)=>{
   
 console.log(response.data);
@@ -113,7 +113,7 @@ console.log(response.data);
 	const editPass=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserPass",
+        Axios.post("http://3.135.17.82:3001/editUserPass",
 {_id:localStorage.getItem('id'),newPwd:newpass}).then((response)=>{
   
 console.log(response.data);
@@ -125,7 +125,7 @@ console.log(response.data);
     const editCity=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserCity",
+        Axios.post("http://3.135.17.82:3001/editUserCity",
 {_id:localStorage.getItem('id'),newCity:newcity}).then((response)=>{
 	localStorage.setItem('city',newcity);  
 console.log(response.data);
@@ -136,7 +136,7 @@ localStorage.setItem('city',newcity);
     const editState=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserState",
+        Axios.post("http://3.135.17.82:3001/editUserState",
 {_id:localStorage.getItem('id'),newState:newstate}).then((response)=>{
   
 console.log(response.data);
@@ -147,7 +147,7 @@ console.log(response.data);
     const editCountry=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editUserCountry",
+        Axios.post("http://3.135.17.82:3001/editUserCountry",
 {_id:localStorage.getItem('id'),newCountry:newcountry}).then((response)=>{
   
 console.log(response.data);

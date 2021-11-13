@@ -36,7 +36,7 @@ const disp=()=>{
 const addToFavourite=(Rest, Loc)=>{
     alert("Added to Favourites");
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/favRest",
+    Axios.post("http://3.135.17.82:3001/favRest",
     {name:Rest,loc:Loc,id:localStorage.getItem('id')}).then((response)=>{
       console.log("Added to favourite");
      
@@ -46,7 +46,7 @@ const addToFavourite=(Rest, Loc)=>{
 useEffect(()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
 
-    Axios.post("http://localhost:3001/restNearMe",
+    Axios.post("http://3.135.17.82:3001/restNearMe",
     {city:localStorage.getItem('city')}).then((response)=>{
       setRestNearMe(response.data.restNear);
      

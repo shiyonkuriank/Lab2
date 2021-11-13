@@ -14,7 +14,7 @@ function OrdersReceived(){
 
     useEffect(()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/viewCustOrder",
+        Axios.post("http://3.135.17.82:3001/viewCustOrder",
         {id:localStorage.getItem('id')}).then((response)=>{
           setOrders(response.data.orders);
          
@@ -23,7 +23,7 @@ function OrdersReceived(){
     
     const filterStatus=()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/orderStatusFilter",
+        Axios.post("http://3.135.17.82:3001/orderStatusFilter",
         {id:localStorage.getItem('id'),status:filter}).then((response)=>{
           setResult(response.data.filterOrders);
          
@@ -34,7 +34,7 @@ function OrdersReceived(){
 
     const setStatus=(id)=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/setOrderStatus",
+        Axios.post("http://3.135.17.82:3001/setOrderStatus",
         {id:id,status:orderStatus}).then((response)=>{
           console.log(response.data.data);
          

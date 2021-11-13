@@ -41,7 +41,7 @@ history.push('/Confirmation');
     
  useEffect(()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/dishes",
+    Axios.post("http://3.135.17.82:3001/dishes",
 {id:localStorage.getItem('rest_id')}).then((response)=>{
 setdata(response.data.dishes);
 
@@ -51,7 +51,7 @@ setdata(response.data.dishes);
 
  useEffect(()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/profile",
+    Axios.post("http://3.135.17.82:3001/profile",
 {_id:localStorage.getItem('rest_id')}).then((response)=>{
 setRestdata(response.data.payload);
 

@@ -28,7 +28,7 @@ s3.upload(params,async(err,result) =>{
       error:err.message,
     });
   }
-    res.send({imagePath : `/image${result.Key}`})
+    res.send({imagePath : `https://myubereats.s3.us-east-2.amazonaws.com/${result.Key}`})
 });
 
 };

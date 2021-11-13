@@ -17,7 +17,7 @@ function AddDish(){
     const addDish=()=>{
         alert("Dish added Successfully");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/addDish",
+        Axios.post("http://3.135.17.82:3001/addDish",
 {id:localStorage.getItem('id'),name:name,price:price,type:foodType,cat:cat,ing:ing}
 ).then((response)=>{
     

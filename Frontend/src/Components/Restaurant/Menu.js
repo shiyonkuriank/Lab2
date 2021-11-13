@@ -9,7 +9,7 @@ function Menu(){
     
   useEffect(()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/dishes",
+    Axios.post("http://3.135.17.82:3001/dishes",
     {id:localStorage.getItem('id')}).then((response)=>{
       setdata(response.data.dishes);
       

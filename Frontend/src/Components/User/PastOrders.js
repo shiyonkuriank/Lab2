@@ -40,7 +40,7 @@ function Orders(){
 
 useEffect(()=>{
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/viewRestOrder",
+    Axios.post("http://3.135.17.82:3001/viewRestOrder",
     {id:localStorage.getItem('id')}).then((response)=>{
       setOrders(response.data.orders);
      
@@ -50,7 +50,7 @@ useEffect(()=>{
 
     const filterStatus=()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/statusFilter",
+        Axios.post("http://3.135.17.82:3001/statusFilter",
         {id:localStorage.getItem('id'),status:filter}).then((response)=>{
           setResult(response.data.orderFilter);
          

@@ -40,12 +40,12 @@ function EditProfile(){
         const formData = new FormData();
         formData.append("originalname",profileImg);
         console.log("image here",profileImg)
-        Axios.post("http://localhost:3001/editRestImg",formData).then((response)=>{
+        Axios.post("http://3.135.17.82:3001/editRestImg",formData).then((response)=>{
   
             console.log(response.data.imagePath);
             const imagePath = response.data.imagePath;
             Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-            Axios.post("http://localhost:3001/restPic",{
+            Axios.post("http://3.135.17.82:3001/restPic",{
               id:localStorage.getItem('id'),picture:imagePath,})
 
 });
@@ -64,7 +64,7 @@ function EditProfile(){
     const editName=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editName",
+        Axios.post("http://3.135.17.82:3001/editName",
 {id:localStorage.getItem('id'),newName:newname}).then((response)=>{
      
 console.log(response.data);
@@ -77,13 +77,13 @@ Axios.post("http://localhost:3001/editOrderSummaryRestName",
 
 });
 
-Axios.post("http://localhost:3001/editDishesRestName",
+Axios.post("http://3.135.17.82:3001/editDishesRestName",
 {name:localStorage.getItem('name'),newName:newname}).then((response)=>{
     console.log(response.data);
 
 });
 
-Axios.post("http://localhost:3001/editFavRestName",
+Axios.post("http://3.135.17.82:3001/editFavRestName",
 {name:localStorage.getItem('name'),newName:newname}).then((response)=>{
     console.log(response.data);
 
@@ -94,7 +94,7 @@ localStorage.setItem('name',newname);
     const editEmail=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editEmail",
+        Axios.post("http://3.135.17.82:3001/editEmail",
 {id:localStorage.getItem('id'),newemail:newemail}).then((response)=>{
   
 console.log(response.data);
@@ -105,7 +105,7 @@ console.log(response.data);
     const editPhone=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editPhone",
+        Axios.post("http://3.135.17.82:3001/editPhone",
 {id:localStorage.getItem('id'),newPhone:newphone}).then((response)=>{
   
 console.log(response.data);
@@ -115,7 +115,7 @@ console.log(response.data);
     const editLoc=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editLoc",
+        Axios.post("http://3.135.17.82:3001/editLoc",
 {id:localStorage.getItem('id'),newLoc:newloc}).then((response)=>{
   
 console.log(response.data);
@@ -126,7 +126,7 @@ console.log(response.data);
     const editType=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editType",
+        Axios.post("http://3.135.17.82:3001/editType",
 {name:localStorage.getItem('name'),type:dType}).then((response)=>{
   
 console.log(response.data);
@@ -137,7 +137,7 @@ console.log(response.data);
     const editDesc=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editDesc",
+        Axios.post("http://3.135.17.82:3001/editDesc",
 {id:localStorage.getItem('id'),newDesc:newdesc}).then((response)=>{
   
 console.log(response.data);
@@ -147,7 +147,7 @@ console.log(response.data);
     const editTime=()=>{
         console.log("Editing called");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');  
-        Axios.post("http://localhost:3001/editTime",
+        Axios.post("http://3.135.17.82:3001/editTime",
 {id:localStorage.getItem('id'),newTime:newtime}).then((response)=>{
   
 console.log(response.data);

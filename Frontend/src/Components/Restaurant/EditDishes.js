@@ -52,12 +52,12 @@ function EditDishes(){
         const formData = new FormData();
         formData.append("originalname",profileImg);
         console.log("image here",profileImg)
-        Axios.post("http://localhost:3001/editRestImg",formData).then((response)=>{
+        Axios.post("http://3.135.17.82:3001/editRestImg",formData).then((response)=>{
   
             console.log(response.data.imagePath);
             const imagePath = response.data.imagePath;
             Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-            Axios.post("http://localhost:3001/dishPic",{
+            Axios.post("http://3.135.17.82:3001/dishPic",{
               id:localStorage.getItem('id'),picture:imagePath,dish:name})
 
 });
@@ -67,7 +67,7 @@ function EditDishes(){
     const editDname=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editDname",
+        Axios.post("http://3.135.17.82:3001/editDname",
 {id:localStorage.getItem('id'),name:name,newname:newname}).then((response)=>{
   
 console.log(response.data);
@@ -78,7 +78,7 @@ console.log(response.data);
     const editPrice=()=>{
         alert("Successfully Edited");
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/editPrice",
+        Axios.post("http://3.135.17.82:3001/editPrice",
 {id:localStorage.getItem('id'),name:name,newPrice:newprice}).then((response)=>{
   
 console.log(response.data);

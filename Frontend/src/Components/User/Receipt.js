@@ -19,7 +19,7 @@ if(orderStatus==="Cancelled"){
 if(orderStatus==="New Order"){
     console.log("cancel called");
     Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-    Axios.post("http://localhost:3001/cancelOrder",
+    Axios.post("http://3.135.17.82:3001/cancelOrder",
     {id:id}).then((response)=>{
       setCancelMessage("Order Cancelled");
      
@@ -29,7 +29,7 @@ if(orderStatus==="New Order"){
 
     useEffect(()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/viewReceipt",
+        Axios.post("http://3.135.17.82:3001/viewReceipt",
         {id:localStorage.getItem('receiptFor')}).then((response)=>{
           setReceipt(response.data.receipt);
          

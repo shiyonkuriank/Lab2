@@ -9,7 +9,7 @@ function Favourites(){
 
     useEffect(()=>{
         Axios.defaults.headers.common.authorization = localStorage.getItem('token');
-        Axios.post("http://localhost:3001/fav",
+        Axios.post("http://3.135.17.82:3001/fav",
         {id:localStorage.getItem('id')}).then((response)=>{
           setFav(response.data.favs);
          
