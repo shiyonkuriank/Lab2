@@ -42,14 +42,14 @@ function UserSign(){
         
         Axios.post("http://3.135.17.82:3001/userlogin",
         {email:email,Pwd:pwd}).then((response)=>{
-            
+            console.log("successfully logged in 1");
             if(response.data.message){
-                 
+                console.log("successfully logged in 2");
                 setLoginStatus(response.data.message);
                 localStorage.setItem('isAuthenticated','false');
                      }else if(response.status==200){
                          
-                          console.log("successfully logged in");                           
+                          console.log("successfully logged in 3");                           
                         
                         localStorage.setItem('isAuthenticated','true');
                         localStorage.setItem('token',response.data.fullToken);
