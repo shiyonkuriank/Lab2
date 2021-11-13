@@ -1,5 +1,5 @@
 const router = require ("express").Router();
-var kafka = require("../kafka/client");
+var kafka = require("../Kafka/client");
 const { checkAuth } = require("../Utils/restPassport")
 const appController = require("../controllers/fileUpload");
 const multer = require("multer")

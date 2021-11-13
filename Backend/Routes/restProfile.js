@@ -1,5 +1,5 @@
 const express = require('express');
-const kafka = require('../kafka/client');
+const kafka = require('../Kafka/client');
 const {restCheckAuth}=require('../Utils/restPassport');
 const { restAuth } = require("../Utils/restPassport");
 restAuth();

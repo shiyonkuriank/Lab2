@@ -1,6 +1,6 @@
 const express = require('express');
 const {checkAuth}=require('../Utils/passport')
-const kafka = require('../kafka/client');
+const kafka = require('../Kafka/client');
 
 
 const router = express.Router();
