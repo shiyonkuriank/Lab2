@@ -4,39 +4,52 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const { ExtractJwt } = require("passport-jwt");
 const passport = require("passport");
 const {secret}=require('./config');
-const Users = require('../Models/UserModel');
 const Rest=require("../Models/RestModel");
+const User=require("../Models/UserModel");
 
-
-function auth() {
-    console.log("Inside passport: "+secret);
+// Setup work and export for the JWT passport strategy
+function restAuth() {
+    console.log(secret);
   const opts = {
       
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
     secretOrKey: secret,
   };
-  console.log(opts);
   passport.use(
     new JwtStrategy(opts, (jwt_payload, callback) => {
-      console.log(jwt_payload);
-      console.log("inside passport use");
       const _id = jwt_payload._id;
-      console.log("Inside passport: "+_id);
-      Users.findById(_id, (err, results) => {
+      console.log("Inside restpassport: "+_id);
+      console.log("Type: "+jwt_payload.Type);
+      if(jwt_payload.Type==="Rest"){
+      Rest.findById(_id, (err, results) => {
         if (err) {
           return callback(err, false);
         }
         if (results) {
-          console.log(results);
           callback(null, results);
         } else {
           callback(null, false);
         }
       });
+    }else{
+      User.findById(_id, (err, results) => {
+        if (err) {
+          return callback(err, false);
+        }
+        if (results) {
+          callback(null, results);
+        } else {
+          callback(null, false);
+        }
+      });
+    }
+    })
+  ,
 
-    }),
+  
+    
   );
 }
 
-exports.auth = auth;
-exports.checkAuth = passport.authenticate("jwt", { session: false });
+exports.restAuth = restAuth;
+exports.restCheckAuth = passport.authenticate("jwt", { session: false });
