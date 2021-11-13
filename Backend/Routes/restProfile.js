@@ -1,13 +1,12 @@
 const express = require('express');
 const kafka = require('../Kafka/client');
-const {restCheckAuth}=require('../Utils/restPassport');
-const { restAuth } = require("../Utils/restPassport");
-restAuth();
+const {checkAuth}=require('../Utils/passport');
+
 
 
 const router = express.Router();
 
-router.post('/',restCheckAuth, (req, res)=>{
+router.post('/',checkAuth, (req, res)=>{
       kafka.make_request('restProfile', req.body, function(err, data){
       if (err) {
         res.writeHead(400, {
