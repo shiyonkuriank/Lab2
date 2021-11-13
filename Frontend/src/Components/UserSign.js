@@ -49,7 +49,7 @@ function UserSign(){
                 localStorage.setItem('isAuthenticated','false');
                      }else{
                          
-                                                     
+                          console.log("successfully logged in");                           
                         window.open("./User/User","_self");
                         localStorage.setItem('isAuthenticated','true');
                         localStorage.setItem('token',response.data.fullToken);

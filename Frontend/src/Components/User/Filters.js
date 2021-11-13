@@ -115,9 +115,9 @@ const locSearch=()=>{
                     return (
                     <><div className="grid-item">
                      <p className="list" ><Link to={"/OrderNow"} 
-                        onClick={()=>{localStorage.setItem('restName',d.RestName);
+                        onClick={()=>{localStorage.setItem('restName',d.Name);
                         localStorage.setItem('rest_id',d._id);}}
-                        class="a" style={{color:"forestgreen"}}><h4>{d.RestName}</h4></Link></p>
+                        class="a" style={{color:"forestgreen"}}><h4>{d.Name}</h4></Link></p>
                      
                      <p key={idx} >City: {d.Location}</p>
                             <p key={idx} >Category: {d.FoodType}</p>
