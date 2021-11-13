@@ -47,7 +47,7 @@ function UserSign(){
                 console.log("successfully logged in 2");
                 setLoginStatus(response.data.message);
                 localStorage.setItem('isAuthenticated','false');
-                     }else if(response.status==200){
+                     }else if(response.status===200){
                          
                           console.log("successfully logged in 3");                           
                         
@@ -62,7 +62,7 @@ function UserSign(){
                         localStorage.setItem('state',response.data.payload.State);
                         localStorage.setItem('country',response.data.payload.Country);
                         localStorage.setItem('currRest',"");
-                        //window.open("./User/User","_self");
+                        window.open("./User/User","_self");
 
                     }
             

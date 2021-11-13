@@ -20,12 +20,13 @@ function RestSign(){
          
         Axios.post("http://3.135.17.82:3001/restlogin",
         {email:email,pwd:pwd}).then((response)=>{
+            console.log("successfully logged in 1");
             if(response.data.message){
-                 
+                console.log("successfully logged in 2");
                 setLoginStatus(response.data.message);
                 localStorage.setItem('isAuthenticated','false');
                     }else{
-                        
+                        console.log("successfully logged in 3");
                         window.open("./Restaurant/Restaurant","_self");
                         localStorage.setItem('isAuthenticated','true');
                         localStorage.setItem('token',response.data.fullToken);
@@ -46,7 +47,7 @@ function RestSign(){
         <><Navbar /><Container>
             <Row>
                 <Col md={6}>
-                    <form className="restLogin" onSubmit={restlogin}>
+                    <form className="restLogin" onSubmit={()=>{restlogin()}}>
                         <h1>UberEats!</h1>
                         <div className="form-group">
                             <label>Enter your Email:</label>
