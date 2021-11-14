@@ -42,6 +42,29 @@ function UserSign(){
         const headers = new Headers();
         Axios.post("http://3.135.17.82:3001/userlogin",
         {email:email,Pwd:pwd}).then((response)=>{
+                         
+                        
+                        localStorage.setItem('isAuthenticated','true');
+                        localStorage.setItem('token',response.data.fullToken);
+                        localStorage.setItem('id',response.data.payload._id);
+                        localStorage.setItem('name',response.data.payload.UserName);
+                        localStorage.setItem('email',response.data.payload.Email);
+                        localStorage.setItem('phone',response.data.payload.Phone);
+                        localStorage.setItem('dob',response.data.payload.DOB);
+                        localStorage.setItem('city',response.data.payload.City);
+                        localStorage.setItem('state',response.data.payload.State);
+                        localStorage.setItem('country',response.data.payload.Country);
+                        localStorage.setItem('currRest',"");
+                       
+
+                    
+            
+                });
+                history.push('/User/User');
+            }
+            
+
+            /*
             console.log("successfully logged in 1");
             if(response.data.message){
                 console.log("successfully logged in 2");
@@ -65,31 +88,6 @@ function UserSign(){
                         window.open("./User/User","_self");
 
                     }
-            
-                });
-            }
-            
-
-            /*
-            const decryptPass=decrypt(response.data[0].Pwd,response.data[0].iv);
-            if(decryptPass==pwd){
-                       
-                window.open("./User/User","_self");
-                localStorage.setItem('isAuthenticated','true');
-                localStorage.setItem('name',response.data[0].Name);
-                localStorage.setItem('email',response.data[0].Email);
-                localStorage.setItem('phone',response.data[0].Phone);
-                localStorage.setItem('dob',response.data[0].DOB);
-                localStorage.setItem('city',response.data[0].City);
-                localStorage.setItem('state',response.data[0].State);
-                localStorage.setItem('country',response.data[0].Country);
-                localStorage.setItem('pwd',response.data[0].Pwd);
-                localStorage.setItem('currRest',"");
-                              
-            }else{
-                setLoginStatus("No such User Found");
-            }*/
-            
             /*
             
                                       
