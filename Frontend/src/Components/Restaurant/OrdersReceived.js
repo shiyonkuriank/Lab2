@@ -68,6 +68,7 @@ return(
                                         <option value="Delivered">Delivered</option>
                                         <option value="Pick Up Ready">Pick Up Ready</option>
                                         <option value="Picked Up">Picked Up</option>
+                                        <option value="Cancelled">Cancelled</option>
 
                                     </select><button className="button" onClick={() => { setStatus(d._id); } }>Update</button>
                                     </div>
