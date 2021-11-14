@@ -6,7 +6,7 @@ const kafka = require('../Kafka/client');
 const router = express.Router();
 
 router.post('/',checkAuth,(req, res)=>{
-    console.log("in editemail route");
+    console.log("in editcity route");
       kafka.make_request('editUserCity', req.body, function(err, data){
       if (err) {
         res.writeHead(400, {

@@ -21,12 +21,12 @@ const handle_request = async (msg, callback) => {
                    },
                    (updateErr, updatedData) => {
                     if (updateErr) {
-                      err.status = 400; err.data = "cannot update group name";
+                      err.status = 400; err.data = "cannot update ";
                       console.log('err data', err);
                       callback(null, err);
                     } else {
                       res.status = 200; res.data = updatedData;
-                      console.log('group name data', res);
+                      console.log('updated data', res);
                       callback(null, res);
                     }
                   },
