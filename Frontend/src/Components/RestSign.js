@@ -20,14 +20,7 @@ function RestSign(){
         const headers = new Headers();
         Axios.post("http://3.135.17.82:3001/restlogin",
         {email:email,pwd:pwd}).then((response)=>{
-            console.log("successfully logged in 1");
-            if(response.data.message){
-                console.log("successfully logged in 2");
-                setLoginStatus(response.data.message);
-                localStorage.setItem('isAuthenticated','false');
-                    }else{
-                        console.log("successfully logged in 3");
-                        window.open("./Restaurant/Restaurant","_self");
+
                         localStorage.setItem('isAuthenticated','true');
                         localStorage.setItem('token',response.data.fullToken);
                         localStorage.setItem('id',response.data.payload._id);
@@ -36,9 +29,9 @@ function RestSign(){
                         localStorage.setItem('phone',response.data.payload.Phone);
                         localStorage.setItem('city',response.data.payload.Location);
                         
-                    }
+                    
     });
-
+    history.push('/Restaurant/Restaurant');
  
  }   
        
